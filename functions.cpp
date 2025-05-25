@@ -1,4 +1,8 @@
 #include "functions.hpp"
+#include <QDialog>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 namespace clientFunctions {
 
@@ -63,4 +67,58 @@ void hideError(QLabel* errorLabel, QWidget* errorContainer) {
     errorLabel->clear();
 }
 
+bool confirmWindow(const QString& message)
+{
+    QDialog dialog;
+    dialog.setWindowTitle("Подтверждение");
+    dialog.setWindowFlags(Qt::FramelessWindowHint);
+    // Рамка только для всего окна
+    dialog.setStyleSheet("QDialog {"
+                         "background-color: #1B191D;"
+                         "border: 2px solid #3A393E;"
+                         "border-radius: 5px;"
+                         "}");
+
+    dialog.setFixedSize(250, 100);
+
+    QVBoxLayout *layout = new QVBoxLayout(&dialog);
+    layout->setContentsMargins(10, 10, 10, 10); // Отступы внутри окна
+
+    QLabel *messageLabel = new QLabel(message, &dialog);
+    messageLabel->setStyleSheet(
+        "color: #FFFFFF;"
+        "font-size: 14px;"
+        "background: transparent;"  // Прозрачный фон
+        "border: none;"           // Убираем рамку
+        "margin: 0;"              // Убираем внешние отступы
+        "padding: 0;"             // Убираем внутренние отступы
+        );
+    messageLabel->setAlignment(Qt::AlignCenter);
+    messageLabel->setWordWrap(true);
+
+    QHBoxLayout *buttonsLayout = new QHBoxLayout();
+    QPushButton *yesButton = new QPushButton("Да", &dialog);
+    QPushButton *noButton = new QPushButton("Нет", &dialog);
+
+    setupButtonStyle(yesButton);
+    setupButtonStyle(noButton);
+
+    yesButton->setFixedWidth(100);
+    noButton->setFixedWidth(100);
+
+    buttonsLayout->addWidget(yesButton);
+    buttonsLayout->addWidget(noButton);
+    buttonsLayout->setAlignment(Qt::AlignCenter);
+    buttonsLayout->setSpacing(20);
+
+    layout->addWidget(messageLabel);
+    layout->addLayout(buttonsLayout);
+
+    QObject::connect(yesButton, &QPushButton::clicked, &dialog, &QDialog::accept);
+    QObject::connect(noButton, &QPushButton::clicked, &dialog, &QDialog::reject);
+
+    return dialog.exec() == QDialog::Accepted;
 }
+
+}
+

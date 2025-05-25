@@ -2,18 +2,27 @@
   <qresource prefix="/">
     <file>images/app_icon.ico</file>
     <file>images/logo.png</file>
+
     <file>images/contacts_icon.png</file>
     <file>images/contacts_icon_hovered.png</file>
     <file>images/contacts_icon_pressed.png</file>
-    <file>images/settings_icon.png</file>
-    <file>images/search_icon.png</file>
-    <file>images/search_icon_hovered.png</file>
-    <file>images/search_icon_pressed.png</file>
+
     <file>images/chat_icon.png</file>
     <file>images/chat_icon_hovered.png</file>
     <file>images/chat_icon_pressed.png</file>
+
     <file>images/settings_icon.png</file>
     <file>images/settings_icon_hovered.png</file>
     <file>images/settings_icon_pressed.png</file>
+
+    <file>images/search_icon.png</file>
+    <file>images/search_icon_hovered.png</file>
+    <file>images/search_icon_pressed.png</file>
+
+    <file>images/text_chat_icon.png</file>
+    <file>images/voice_chat_icon.png</file>
+
+    <file>images/text_chat_ON.png</file>
+    <file>images/voice_chat_ON.png</file>
   </qresource>
 </RCC>

@@ -15,7 +15,7 @@ void setupButtonStyle(QPushButton *button);
 void updateErrorPosition(QWidget* errorContainer, QWidget* loginEdit);
 void showError(QLabel* errorLabel, QWidget* errorContainer, QWidget* loginEdit, const QString& message);
 void hideError(QLabel* errorLabel, QWidget* errorContainer);
-
+bool confirmWindow(const QString& message);
 }
 
 #endif // FUNCTIONS_HPP
